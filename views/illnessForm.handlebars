@@ -1,0 +1,72 @@
+<div class="symptoms-container">
+
+    <form method="POST" action="">
+    <h1>Symptoms Checking</h1>
+        <div>Name: <input type="text"></div>
+        <br>
+        <div>Email: <input type="email"></div>
+        <fieldset>
+            <legend>
+                <h3>Are you or anyone you know experiencing any of these symptoms?</h3>
+            </legend>
+
+            {{!-- DEPRESSION SYMPTOMS --}}
+            Do you have suicidal thoughts?
+            <input type="radio" name="symptomOne"><span>Yes</span>
+            <input type="radio" name="symptomOne"><span>No</span>
+            <br>
+
+            Do you have anxiety?
+            <input type="radio" name="symptomTwo"><span>Yes</span>
+            <input type="radio" name="symptomTwo"><span>No</span>
+            <br>
+
+            Always feeling sad?
+            <input type="radio" name="symptomThree"><span>Yes</span>
+            <input type="radio" name="symptomThree"><span>No</span>
+            <br>
+
+            {{!-- BIPOLAR SYMPTOMS --}}
+            Are you easily distracted?
+            <input type="radio" name="symptomFour"><span>Yes</span>
+            <input type="radio" name="symptomFour"><span>No</span>
+            <br>
+
+            Are you agitated?
+            <input type="radio" name="symptomFive"><span>Yes</span>
+            <input type="radio" name="symptomFive"><span>No</span>
+            <br>
+
+            Do you have mood swings?
+            <input type="radio" name="symptomSix"><span>Yes</span>
+            <input type="radio" name="symptomSix"><span>No</span>
+            <br>
+
+            {{!-- AUTISM SYMPTOMS --}}
+            Poor eye contact?
+            <input type="radio" name="symptomSeven"><span>Yes</span>
+            <input type="radio" name="symptomSeven"><span>No</span>
+            <br>
+
+            Problem paying attention?
+            <input type="radio" name="symptomEight"><span>Yes</span>
+            <input type="radio" name="symptomEight"><span>No</span>
+            <br>
+
+            Self-harming?
+            <input type="radio" name="symptomNine"><span>Yes</span>
+            <input type="radio" name="symptomNine"><span>No</span>
+        </fieldset>
+        <br>
+
+        <select id="ageGroup">
+            <option value="">Select age group</option>
+            <option value="children">1 - 11</option>
+            <option value="teenagers">12 - 17</option>
+            <option value="adults">18 - 64</option>
+            <option value="elderly">65+</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
