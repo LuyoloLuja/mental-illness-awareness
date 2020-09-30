@@ -1,18 +1,6 @@
 <div class="symptoms-container">
-
-
-
     <form method="POST" action="/goToForm">
         <h1>Symptoms Checking</h1>
-        {{!-- <div>Name: <input name="name" required type="text"></div>
-        <br>
-        <select name="userAge" id="ageGroup">
-            <option value="">Select age group</option>
-            <option value="teenagers">10 - 17</option>
-            <option value="adults">18 - 29</option>
-            <option value="elderly">30 - 45</option>
-        </select> --}}
-
         <br>
         <fieldset>
             <legend>
@@ -20,26 +8,17 @@
             </legend>
 
             {{#each symptomNames}}
-            {{!-- DEPRESSION SYMPTOMS --}}
+                <input type="radio" required name="{{names}}_{{illness_id}}_{{this.id}}" value="yes"><span>Yes</span>
+                <input type="radio" required name="{{names}}_{{illness_id}}_{{this.id}}" value="no" checked><span>No</span>
 
-            <input type="radio" required name="{{names}}_{{illness_id}}_{{this.id}}" value="yes"><span>Yes</span>
-            <input type="radio" required name="{{names}}_{{illness_id}}_{{this.id}}" value="no" checked><span>No</span>
-
-            <strong>
-                {{this.description}}
-            </strong>
-{{!-- 
-            <div>
-
-            </div> --}}
-
-            <br>
+                <strong>
+                    {{this.description}}
+                </strong>
+                <br>
             {{/each}}
 
         </fieldset>
         <br>
         <button type="submit">Submit</button>
     </form>
-
-   
 </div>
