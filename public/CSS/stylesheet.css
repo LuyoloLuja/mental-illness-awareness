@@ -3,8 +3,18 @@ body {
     padding: 0;
     font-family: Helvetica, Arial, sans-serif
 }
+
 .symptoms-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
+header {
+    height: 5em;
+    width: 100%;
+}
+.goToForm-links a {
+    text-decoration: none;
+    background-color: blue;
+}
+
