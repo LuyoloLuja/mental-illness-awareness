@@ -1,7 +1,18 @@
 <html>
 
 <body>
-    <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+     {{!-- <ul>
+        {{#each illnessCounter}}
+
+        <li>
+
+            {{@key}} {{this}}
+
+        </li>
+        {{/each}}
+
+    </ul> --}}
+    {{!-- <div id="columnchart_material" style="width: 800px; height: 500px;"></div> --}}
     <div id="piechart" style="width: 900px; height: 500px;"></div>
 </body>
 
@@ -15,9 +26,9 @@
 
         var data = google.visualization.arrayToDataTable([
             ['Illnesses', 'Percentage per year'],
-            ['Bipolar Disorder', 11],
-            ['Deppression', 2],
-            ['Schizophrenia', 2],
+            ['Bipolar Disorder', {{bipolar}}],
+            ['Deppression', {{depression}}],
+            ['Schizophrenia', {{schizophrenia}}],
 
         ]);
 
@@ -31,7 +42,7 @@
     }
 </script>
 
-<script type="text/javascript">
+{{!-- <script type="text/javascript">
     google.charts.load('current', { 'packages': ['bar'] });
     google.charts.setOnLoadCallback(drawChart);
 
@@ -54,6 +65,6 @@
 
         chart.draw(data, google.charts.Bar.convertOptions(options));
     }
-</script>
+</script> --}}
 
 </html>

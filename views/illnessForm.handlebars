@@ -1,15 +1,17 @@
 <div class="symptoms-container">
 
-    <form method="POST" action="">
-    <h1>Symptoms Checking</h1>
-        <div>Name: <input type="text"></div>
+
+
+    <form method="POST" action="/goToForm">
+        <h1>Symptoms Checking</h1>
+        {{!-- <div>Name: <input name="name" required type="text"></div>
         <br>
-        <select id="ageGroup">
+        <select name="userAge" id="ageGroup">
             <option value="">Select age group</option>
             <option value="teenagers">10 - 17</option>
             <option value="adults">18 - 29</option>
             <option value="elderly">30 - 45</option>
-        </select>
+        </select> --}}
 
         <br>
         <fieldset>
@@ -17,54 +19,27 @@
                 <h3>Are you or anyone you know experiencing any of these symptoms?</h3>
             </legend>
 
+            {{#each symptomNames}}
             {{!-- DEPRESSION SYMPTOMS --}}
-            Do you have suicidal thoughts?
-            <input type="radio" name="symptomOne"><span>Yes</span>
-            <input type="radio" name="symptomOne"><span>No</span>
-            <br>
 
-            Do you have anxiety?
-            <input type="radio" name="symptomTwo"><span>Yes</span>
-            <input type="radio" name="symptomTwo"><span>No</span>
-            <br>
+            <input type="radio" required name="{{names}}_{{illness_id}}_{{this.id}}" value="yes"><span>Yes</span>
+            <input type="radio" required name="{{names}}_{{illness_id}}_{{this.id}}" value="no" checked><span>No</span>
 
-            Always feeling sad?
-            <input type="radio" name="symptomThree"><span>Yes</span>
-            <input type="radio" name="symptomThree"><span>No</span>
-            <br>
+            <strong>
+                {{this.description}}
+            </strong>
+{{!-- 
+            <div>
 
-            {{!-- BIPOLAR SYMPTOMS --}}
-            Are you easily distracted?
-            <input type="radio" name="symptomFour"><span>Yes</span>
-            <input type="radio" name="symptomFour"><span>No</span>
-            <br>
+            </div> --}}
 
-            Are you agitated?
-            <input type="radio" name="symptomFive"><span>Yes</span>
-            <input type="radio" name="symptomFive"><span>No</span>
             <br>
+            {{/each}}
 
-            Do you have mood swings?
-            <input type="radio" name="symptomSix"><span>Yes</span>
-            <input type="radio" name="symptomSix"><span>No</span>
-            <br>
-
-            {{!-- AUTISM SYMPTOMS --}}
-            Poor eye contact?
-            <input type="radio" name="symptomSeven"><span>Yes</span>
-            <input type="radio" name="symptomSeven"><span>No</span>
-            <br>
-
-            Problem paying attention?
-            <input type="radio" name="symptomEight"><span>Yes</span>
-            <input type="radio" name="symptomEight"><span>No</span>
-            <br>
-
-            Self-harming?
-            <input type="radio" name="symptomNine"><span>Yes</span>
-            <input type="radio" name="symptomNine"><span>No</span>
         </fieldset>
         <br>
         <button type="submit">Submit</button>
     </form>
+
+   
 </div>
