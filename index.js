@@ -24,7 +24,8 @@ const pool = new Pool({
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-app.use(express.static("public"));
+// app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
 app.use(express.static('views/images'));
 // parse appliction
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,7 +43,11 @@ app.get("/goToForm", function (req, res) {
 
   res.render("illnessForm")
 })
+//this is for the graphs
+app.get("/chart", function (req, res) {
 
+  res.render("chart")
+})
 
 let PORT = process.env.PORT || 2020;
 
