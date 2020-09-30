@@ -2,38 +2,31 @@ create table illnesses(
     id serial not null primary key,
     names text not null
 );
-INSERT INTO illnesses (names) VALUES ('Bipolar');
-INSERT INTO illnesses (names) VALUES ('Deppression');
-INSERT INTO illnesses (names) VALUES ('Schizophrania');
--------------------------------------------
 
-create table symptom_numbers(
-    ID serial primary key,
-    illness_id INTEGER NOT null,
-    FOREIGN KEY (illness_id) REFERENCES illnesses(id),
-    symptom text not null,
-    FOREIGN KEY (symptom) REFERENCES symptomps(id)
+INSERT INTO illnesses (id, names) VALUES (1, 'Bipolar');
+INSERT INTO illnesses (id, names) VALUES (2, 'Deppression');
+INSERT INTO illnesses (id, names) VALUES (3, 'Schizophrania');
+
+create table symptoms (
+    id serial NOT NULL PRIMARY KEY,
+    description TEXT NOT NULL,
+    illness_id int NOT NULL,
+    FOREIGN KEY (illness_id) REFERENCES illnesses(id)
 );
 
-
---------------------------------------------
-create table symptomps (
-    ID serial NOT NULL PRIMARY KEY,
-    symptom_name TEXT NOT NULL
-);
-
----------------------------------------------
---  Bipolar
-INSERT INTO symptomps (symptom_name) VALUES ('High or irritated mood');
-INSERT INTO symptomps (symptom_name) VALUES ('More Energy');
-INSERT INTO symptomps (symptom_name) VALUES ('Easily Distracted');
-
--- Deppression
-INSERT INTO symptomps (symptom_name) VALUES ('Anxiety');
-INSERT INTO symptomps (symptom_name) VALUES ('Suicidal Thought');
-INSERT INTO symptomps (symptom_name) VALUES ('Always Feeling Sad');
-
-INSERT INTO symptomps (symptom_name) VALUES ('Aggression');
-INSERT INTO symptomps (symptom_name) VALUES ('Hallucination');
-INSERT INTO symptomps (symptom_name) VALUES ('Hallucination');
-INSERT INTO symptomps (symptom_name) VALUES ('Agitated');
+INSERT INTO symptoms (description, illness_id) VALUES ('Hallucination', 3);
+INSERT INTO symptoms (description, illness_id) VALUES ('High or irritated mood', 1);
+INSERT INTO symptoms (description, illness_id) VALUES ('Anxiety', 2);
+INSERT INTO symptoms (description, illness_id) VALUES ('Easily Distracted', 1);
+INSERT INTO symptoms (description, illness_id) VALUES ('Suicidal Thought', 2);
+INSERT INTO symptoms (description, illness_id) VALUES ('Delusion', 3);
+INSERT INTO symptoms (description, illness_id) VALUES ('More Energy than usual', 1);
+INSERT INTO symptoms (description, illness_id) VALUES ('Weight gain or weight loss', 2);
+INSERT INTO symptoms (description, illness_id) VALUES ('Agitated', 3);
+INSERT INTO symptoms (description, illness_id) VALUES ('Always Feeling Sad', 2);
+INSERT INTO symptoms (description, illness_id) VALUES ('Aggression', 3);
+INSERT INTO symptoms (description, illness_id) VALUES ('Disorganized thinking', 3);
+INSERT INTO symptoms (description, illness_id) VALUES ('Mood Swings', 1);
+INSERT INTO symptoms (description, illness_id) VALUES ('Fatigue', 2);
+INSERT INTO symptoms (description, illness_id) VALUES ('Rapidly flow speech', 1);
+INSERT INTO symptoms (description, illness_id) VALUES ('Memory loss', 3);

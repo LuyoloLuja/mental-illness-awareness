@@ -4,7 +4,14 @@
     <h1>Symptoms Checking</h1>
         <div>Name: <input type="text"></div>
         <br>
-        <div>Email: <input type="email"></div>
+        <select id="ageGroup">
+            <option value="">Select age group</option>
+            <option value="teenagers">10 - 17</option>
+            <option value="adults">18 - 29</option>
+            <option value="elderly">30 - 45</option>
+        </select>
+
+        <br>
         <fieldset>
             <legend>
                 <h3>Are you or anyone you know experiencing any of these symptoms?</h3>
@@ -58,15 +65,6 @@
             <input type="radio" name="symptomNine"><span>No</span>
         </fieldset>
         <br>
-
-        <select id="ageGroup">
-            <option value="">Select age group</option>
-            <option value="children">1 - 11</option>
-            <option value="teenagers">12 - 17</option>
-            <option value="adults">18 - 64</option>
-            <option value="elderly">65+</option>
-        </select>
-
         <button type="submit">Submit</button>
     </form>
 </div>
