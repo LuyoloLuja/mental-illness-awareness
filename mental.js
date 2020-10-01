@@ -1,11 +1,10 @@
 module.exports = function Mental(){
-    let names = {};
-    let surnames = {};
+    let names = '';
+    let surnames = '';
 
     function setNames(patientName){
-        if(names[patientName] === undefined){
-            names[patientName] = 0;
-        }
+        names = patientName
+        return;
     }
 
     function getNames(){
@@ -13,9 +12,8 @@ module.exports = function Mental(){
     }
 
     function setSurname (patientSurname){
-        if(surnames[patientSurname] === undefined){
-            surnames[patientSurname] = 0;
-        }
+        surnames = patientSurname
+        return;
     }
 
     function getSurname(){

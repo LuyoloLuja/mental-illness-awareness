@@ -66,23 +66,28 @@
 
                 <fieldset>
                     <label for="name">
-                        Name <input type="text">
+                        <div class="error">
+                            {{messages.error}}
+                        </div>
+                        Name <input name="name" type="text">
                     </label>
                     <label for="surname">
-                        Surname <input type="text">
+                        Surname <input name="surname" type="text">
                     </label>
                     <br>
-                    <select name="doctors" id="doctors">
+                    <select name="doctor" id="doctors">
                         <option value="">Select a doctor</option>
-                        <option value="watson">Dr. Watson</option>
-                        <option value="naaidoo">Dr. Naaidoo</option>
-                        <option value="nkosi">Dr. Nkosi</option>
-                        <option value="hlongwane">Dr. Hlongwane</option>
+                        <option value="Watson">Dr. Watson</option>
+                        <option value="Naaidoo">Dr. Naaidoo</option>
+                        <option value="Nkosi">Dr. Nkosi</option>
+                        <option value="Hlongwane">Dr. Hlongwane</option>
                     </select>
                     <br><br>
                     <button type="submit">Submit</button>
                 </fieldset>
             </form>
+
+            <h4>{{message}}</h4>
         </div>
     </div>
 </body>
@@ -104,8 +109,8 @@
 
         var data = google.visualization.arrayToDataTable([
             ['Illnesses', 'Percentage per year'],
-            ['Bipolar Disorder', {{ bipolar }}],
-    ['Bipolar Not selected', {{ bipolarNot }}]
+            ['Bipolar Symptoms', {{ bipolar }}],
+            ['No Symptoms', {{ bipolarNot }}]
         ]);
 
     var options = {
@@ -121,8 +126,8 @@
 
         var tableData = google.visualization.arrayToDataTable([
             ['Illnesses', 'Percentage per year'],
-            ['Deppression', {{ depression }}],
-    ['Deppression Not', {{ depressionNot }}]
+            ['Deppression Symptoms', {{ depression }}],
+            ['No Symptoms', {{ depressionNot }}]
         ])
 
     var information = {
@@ -138,8 +143,8 @@
 
         var thirdChartData = google.visualization.arrayToDataTable([
             ['Illnesses', 'Percentage per year'],
-            ['Schizophrania', {{ schizophrenia }}],
-    ['Schizophrania Not', {{ schizophreniaNot }}]
+            ['Schizophrania Symptoms', {{ schizophrenia }}],
+            ['No Symptoms', {{ schizophreniaNot }}]
         ])
 
     var optionsThree = {

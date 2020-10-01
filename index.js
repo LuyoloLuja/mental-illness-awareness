@@ -2,6 +2,17 @@ let express = require('express');
 let app = express();
 const bodyParser = require("body-parser");
 var exphbs = require('express-handlebars');
+const flash = require("express-flash");
+const session = require("express-session");
+
+app.use(flash());
+app.use(
+	session({
+		secret: "<add a secret string here>",
+		resave: false,
+		saveUninitialized: true,
+	})
+);
 
 const pg = require("pg");
 const Pool = pg.Pool;
@@ -46,22 +57,36 @@ app.get("/goToForm", async function (req, res) {
   var description = await pool.query('SELECT symptoms.id, description, illness_id, names FROM symptoms join illnesses on illnesses.id = symptoms.illness_id order by illness_id ')
 
   const symptomNames = description.rows
-  res.render("illnessForm", { symptomNames })
+
+  let enteredName = mental.getNames() || "";
+  let enteredSurname = mental.getSurname() || "";
+
+  res.render("illnessForm", { symptomNames, enteredName, enteredSurname })
 })
 
 //this is for the graphs
 app.get("/chart", async function (req, res) {
+  
 
   res.render("chart")
+  // res.render("chart")
 })
 
 app.post("/chart", function(req, res){
 
-  let username = req.body.name;
-  let userSurname = req.body.surname;
+  const {name, surname, doctor} = req.body;
 
-  mental.setNames(username);
-  mental.setSurname(userSurname);
+  res.render('chart', {
+    message: `${name} ${surname} Your appointment is successful with Dr.${doctor}.`
+  })
+
+  if(!name){
+    req.flash('errror', 'Please enter your name!')
+  }else if(!surname){
+    req.flash('error', 'Please enter your surname!')
+  }else if(!doctor){
+    req.flash('error', 'Please select a doctor!')
+  }
 
 })
 
@@ -80,7 +105,7 @@ app.post("/goToForm", async function (req, res) {
   const answers = req.body;
   var description = await pool.query('SELECT symptoms.id, description, illness_id, names FROM symptoms join illnesses on illnesses.id = symptoms.illness_id order by illness_id ')
 
-  const symptomNames = description.rows
+  // const symptomNames = description.rows
   const illnessCounter = {
 
   };
