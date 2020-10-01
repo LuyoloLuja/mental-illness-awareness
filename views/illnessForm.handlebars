@@ -1,45 +1,109 @@
-<div class="symptoms-container">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: 'Lato', Helvetica, sans-serif;
+        }
+
+        ul {
+            list-style-type: none;
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            display: fixed;
+        }
+
+        ul li {
+            margin: 30px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #fff;
+            margin: 10px;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .symptoms-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .symptoms-container input,
+        span {
+            float: right;
+        }
+
+        label[for="yes"],
+        label[for="no"] {
+            margin: 10px 5px;
+            display: inline-block;
+        }
+
+        .symptom {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul>
+            <li><a href="/">HOME</a></li>
+            <li> <a href="/goToForm">CHECK SYMPTOMS</a> </li>
+            <li> <a href="#">MAKE APPOINTMENT</a> </li>
+            <li> <a href="#">LEARN MORE</a> </li>
+        </ul>
+
+        <br><br><br>
+
+        <div class="symptoms-container">
+            <form method="POST" action="/goToForm">
+                <h1>Symptoms Checking</h1>
+                <br>
+                <fieldset>
+                    <legend>
+                        <h3>Are you or anyone you know experiencing any of these symptoms?</h3>
+                    </legend>
 
 
+                    {{#each symptomNames}}
 
-    <form method="POST" action="/goToForm">
-        <h1>Symptoms Checking</h1>
-        {{!-- <div>Name: <input name="name" required type="text"></div>
-        <br>
-        <select name="userAge" id="ageGroup">
-            <option value="">Select age group</option>
-            <option value="teenagers">10 - 17</option>
-            <option value="adults">18 - 29</option>
-            <option value="elderly">30 - 45</option>
-        </select> --}}
+                    <span class="symptom">
+                        {{this.description}}
+                    </span>
 
-        <br>
-        <fieldset>
-            <legend>
-                <h3>Are you or anyone you know experiencing any of these symptoms?</h3>
-            </legend>
+                    <label for="yes">
+                        <input type="radio" required name="{{names}}_{{illness_id}}_{{this.id}}"
+                            value="yes"><span>Yes</span>
+                    </label>
 
-            {{#each symptomNames}}
-            {{!-- DEPRESSION SYMPTOMS --}}
+                    <label for="no">
+                        <input type="radio" required name="{{names}}_{{illness_id}}_{{this.id}}" value="no"
+                            checked><span>No</span>
+                    </label>
+                    <br>
+                    {{/each}}
 
-            <input type="radio" required name="{{names}}_{{illness_id}}_{{this.id}}" value="yes"><span>Yes</span>
-            <input type="radio" required name="{{names}}_{{illness_id}}_{{this.id}}" value="no" checked><span>No</span>
+                    <br>
+                    <button type="submit">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
 
-            <strong>
-                {{this.description}}
-            </strong>
-{{!-- 
-            <div>
-
-            </div> --}}
-
-            <br>
-            {{/each}}
-
-        </fieldset>
-        <br>
-        <button type="submit">Submit</button>
-    </form>
-
-   
-</div>
+</html>
