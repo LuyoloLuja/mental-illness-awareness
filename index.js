@@ -80,25 +80,17 @@ app.post("/chart", function(req, res){
     message: `${name} ${surname} Your appointment is successful with Dr.${doctor}.`
   })
 
-  if(!name){
-    req.flash('errror', 'Please enter your name!')
-  }else if(!surname){
-    req.flash('error', 'Please enter your surname!')
-  }else if(!doctor){
-    req.flash('error', 'Please select a doctor!')
-  }
-
 })
 
-app.get('/chart', function(req, res){
-  let enteredName = mental.getNames();
-  let enteredSurname = mental.getSurname();
+// app.get('/chart', function(req, res){
+//   let enteredName = mental.getNames();
+//   let enteredSurname = mental.getSurname();
 
-  res.render("/chart", {
-    name : enteredName,
-    surname : enteredSurname
-  })
-})
+//   res.render("/chart", {
+//     name : enteredName,
+//     surname : enteredSurname
+//   })
+// })
 
 app.post("/goToForm", async function (req, res) {
 
