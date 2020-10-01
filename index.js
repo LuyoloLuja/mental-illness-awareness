@@ -17,8 +17,6 @@ app.use(
 const pg = require("pg");
 const Pool = pg.Pool;
 
-// use ssl connection
-
 const connectionString = process.env.DATABASE_URL || 'postgresql://codex:pg123@localhost:5432/mental_illness';
 
 const pool = new Pool({
@@ -71,27 +69,15 @@ app.post("/chart", function(req, res){
   const {name, surname, doctor} = req.body;
 
   res.render('chart', {
-    message: `${name} ${surname} Your appointment is successful with Dr.${doctor}.`
+    message: `${name} ${surname} Your appointment with Dr.${doctor} will be processed!.`
   })
 
 })
 
-// app.get('/chart', function(req, res){
-//   let enteredName = mental.getNames();
-//   let enteredSurname = mental.getSurname();
-
-//   res.render("/chart", {
-//     name : enteredName,
-//     surname : enteredSurname
-//   })
-// })
-
 app.post("/goToForm", async function (req, res) {
 
   const answers = req.body;
-  var description = await pool.query('SELECT symptoms.id, description, illness_id, names FROM symptoms join illnesses on illnesses.id = symptoms.illness_id order by illness_id ')
-
-  // const symptomNames = description.rows
+  
   const illnessCounter = {
 
   };
@@ -109,16 +95,6 @@ app.post("/goToForm", async function (req, res) {
         illnessCounter[illness]++;
       }
     });
-
-  console.log(illnessCounter);
-
-  console.log(Object.keys(illnessCounter).map(function (illness) {
-    return {
-      illness,
-      count: illnessCounter[illness]
-    }
-  }));
-
   
   const screenData = {
     illnessCounter,

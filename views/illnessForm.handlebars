@@ -11,9 +11,44 @@
             font-family: 'Lato', Helvetica, sans-serif;
         }
 
+        form {
+            
+        }
+        form h1 {
+            background-color: #F7F7F7;
+            border: 1px solid #293745;
+            color: #293745;
+            padding: 10px;
+            text-align: center;
+        }
+        form fieldset {
+            background-color: #293745;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            padding: 30px 60px;
+        }
+        form fieldset legend {
+            box-shadow: 0 0 8px #fff;
+            color: #fff;
+            padding: 0 15px;
+            background-color: #2F9ED0;
+            border-radius: 10px;
+        }
+        form fieldset legend h4 {
+            font-weight: lighter;
+        }
+        form fieldset button {
+            background-color: #FDCE4B;
+            color: #293745;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 25px;
+        }
+
         ul {
             list-style-type: none;
-            background-color: #000;
+            background-color: #293745;
             margin: 0;
             padding: 0;
             height: 80px;
@@ -52,7 +87,6 @@
             margin: 10px 5px;
             display: inline-block;
         }
-
         .symptom {
             margin: 10px;
         }
@@ -68,18 +102,16 @@
             <li> <a href="#">LEARN MORE</a> </li>
         </ul>
 
-
-        <br><br><br>
+        <br><br>
 
         <div class="symptoms-container">
             <form method="POST" action="/goToForm">
                 <h1>Symptoms Checking</h1>
-                <br>
+                
                 <fieldset>
                     <legend>
-                        <h3>Are you or anyone you know experiencing any of these symptoms?</h3>
+                        <h4>Are you or anyone you know experiencing any of these symptoms?</h4>
                     </legend>
-
 
                     {{#each symptomNames}}
 
@@ -104,6 +136,7 @@
                 </fieldset>
             </form>
         </div>
+        <br><br><br>
     </div>
 </body>
 
