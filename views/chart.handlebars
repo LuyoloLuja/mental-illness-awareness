@@ -4,10 +4,12 @@
     <style>
         body {
             font-size: 18px;
+            font-family: 'Lato', Helvetica, sans-serif;
         }
+
         ul {
             list-style-type: none;
-            background-color: #000;
+            background-color: #293745;
             margin: 0;
             padding: 0;
             height: 80px;
@@ -33,14 +35,57 @@
         .charts {
             float: left;
         }
-
-        .appointment label {
+        form {
+            color: #fff;
+            display: inline-block;
+            margin: 5em;
+        }
+        form fieldset {
+            background-color: #293745;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            padding: 30px 60px;
+        }
+        form fieldset legend {
+            box-shadow: 0 0 8px #fff;
+            color: #fff;
+            padding: 0 15px;
+            background-color: #2F9ED0;
+            border-radius: 10px;
+        }
+        form fieldset legend h1 {
+            font-weight: lighter;
+        }
+        form fieldset label {
             display: block;
+            width: 100%;
+        }
+        form fieldset label input, select {
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+        form fieldset button {
+            background-color: #FDCE4B;
+            color: #293745;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 25px;
+        }
+        form fieldset button:hover {
+            opacity: 0.8;
         }
 
-        .appointment select {
-            width: 20%;
-            padding: 5px
+        .container h4 {
+            margin: 0 5em;
+            padding: 15px;
+            font-weight: lighter;
+            background-color: #DC402D;
+            color: #fff;
+            display: inline-block;
         }
 
     </style>
@@ -60,35 +105,33 @@
             <div id="piechart3" style="width: 800px; height: 400px;"></div>
         </div>
 
-        <div class="appointment">
-            <h1>Make An Appointment</h1>
-            <form action="/chart" method="POST">
+        <form action="/chart" method="POST">
+            <fieldset>
+                <legend>
+                    <h1>Make An Appointment</h1>
+                </legend>
+                <br>
+                <label for="name">
+                    Name <input name="name" type="text">
+                </label>
+                <br>
+                <label for="surname">
+                    Surname <input name="surname" type="text">
+                </label>
+                <br>
+                <select name="doctor" id="doctors">
+                    <option value="">Select a doctor</option>
+                    <option value="Watson">Dr. Watson</option>
+                    <option value="Naaidoo">Dr. Naaidoo</option>
+                    <option value="Nkosi">Dr. Nkosi</option>
+                    <option value="Hlongwane">Dr. Hlongwane</option>
+                </select>
+                <br><br>
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
 
-                <fieldset>
-                    <label for="name">
-                        <div class="error">
-                            {{messages.error}}
-                        </div>
-                        Name <input name="name" type="text">
-                    </label>
-                    <label for="surname">
-                        Surname <input name="surname" type="text">
-                    </label>
-                    <br>
-                    <select name="doctor" id="doctors">
-                        <option value="">Select a doctor</option>
-                        <option value="Watson">Dr. Watson</option>
-                        <option value="Naaidoo">Dr. Naaidoo</option>
-                        <option value="Nkosi">Dr. Nkosi</option>
-                        <option value="Hlongwane">Dr. Hlongwane</option>
-                    </select>
-                    <br><br>
-                    <button type="submit">Submit</button>
-                </fieldset>
-            </form>
-
-            <h4>{{message}}</h4>
-        </div>
+        <h4>{{message}}</h4>
     </div>
 </body>
 
@@ -98,7 +141,7 @@
 
 
     google.charts.load('current', { 'packages': ['corechart'] });
-    
+
     google.charts.setOnLoadCallback(function () {
 
         drawChart();
@@ -112,7 +155,7 @@
         var data = google.visualization.arrayToDataTable([
             ['Illnesses', 'Percentage per year'],
             ['Bipolar Symptoms', {{ bipolar }}],
-            ['No Symptoms', {{ bipolarNot }}]
+    ['No Symptoms', {{ bipolarNot }}]
         ]);
 
     var options = {
@@ -129,7 +172,7 @@
         var tableData = google.visualization.arrayToDataTable([
             ['Illnesses', 'Percentage per year'],
             ['Deppression Symptoms', {{ depression }}],
-            ['No Symptoms', {{ depressionNot }}]
+    ['No Symptoms', {{ depressionNot }}]
         ])
 
     var information = {
@@ -146,7 +189,7 @@
         var thirdChartData = google.visualization.arrayToDataTable([
             ['Illnesses', 'Percentage per year'],
             ['Schizophrania Symptoms', {{ schizophrenia }}],
-            ['No Symptoms', {{ schizophreniaNot }}]
+    ['No Symptoms', {{ schizophreniaNot }}]
         ])
 
     var optionsThree = {
