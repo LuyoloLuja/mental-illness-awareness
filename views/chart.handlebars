@@ -1,33 +1,156 @@
 <html>
 
+<head>
+    <style>
+        body {
+            font-size: 18px;
+        }
+        ul {
+            list-style-type: none;
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            display: fixed;
+        }
+
+        ul li {
+            margin: 30px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #fff;
+            margin: 10px;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .charts {
+            float: left;
+        }
+
+        .appointment label {
+            display: block;
+        }
+
+        .appointment select {
+            width: 20%;
+            padding: 5px
+        }
+
+    </style>
+</head>
+
 <body>
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <div class="container">
+        <ul>
+            <li><a href="/">HOME</a></li>
+            <li> <a href="/goToForm">CHECK SYMPTOMS</a> </li>
+            <li> <a href="/chart">MAKE APPOINTMENT</a> </li>
+            <li> <a href="#">LEARN MORE</a> </li>
+        </ul>
+        <div class="charts">
+            <div id="piechart" style="width: 800px; height: 400px;"></div>
+            <div id="piechart2" style="width: 800px; height: 400px;"></div>
+            <div id="piechart3" style="width: 800px; height: 400px;"></div>
+        </div>
+
+        <div class="appointment">
+            <h1>Make An Appointment</h1>
+            <form action="/chart" method="POST">
+
+                <fieldset>
+                    <label for="name">
+                        Name <input type="text">
+                    </label>
+                    <label for="surname">
+                        Surname <input type="text">
+                    </label>
+                    <br>
+                    <select name="doctors" id="doctors">
+                        <option value="">Select a doctor</option>
+                        <option value="watson">Dr. Watson</option>
+                        <option value="naaidoo">Dr. Naaidoo</option>
+                        <option value="nkosi">Dr. Nkosi</option>
+                        <option value="hlongwane">Dr. Hlongwane</option>
+                    </select>
+                    <br><br>
+                    <button type="submit">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
 </body>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
     google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(drawChart);
+
+    google.charts.setOnLoadCallback(function () {
+
+        drawChart();
+        secondChart();
+        thirdChart()
+
+    });
 
     function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
             ['Illnesses', 'Percentage per year'],
-            ['Bipolar Disorder', {{bipolar}}],
-            ['Deppression', {{depression}}],
-            ['Schizophrenia', {{schizophrenia}}],
-
+            ['Bipolar Disorder', {{ bipolar }}],
+    ['Bipolar Not selected', {{ bipolarNot }}]
         ]);
 
-        var options = {
-            title: 'MENTAL-ILLNESSES'
-        };
+    var options = {
+        title: 'Out of 5 symptoms for Bipolar Disorder: '
+    };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-        chart.draw(data, options);
+    chart.draw(data, options);
     }
+
+    function secondChart() {
+
+        var tableData = google.visualization.arrayToDataTable([
+            ['Illnesses', 'Percentage per year'],
+            ['Deppression', {{ depression }}],
+    ['Deppression Not', {{ depressionNot }}]
+        ])
+
+    var information = {
+        title: 'Out of 6 symptoms for Deppression:'
+    };
+
+    var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
+
+    chart2.draw(tableData, information);
+    }
+
+    function thirdChart() {
+
+        var thirdChartData = google.visualization.arrayToDataTable([
+            ['Illnesses', 'Percentage per year'],
+            ['Schizophrania', {{ schizophrenia }}],
+    ['Schizophrania Not', {{ schizophreniaNot }}]
+        ])
+
+    var optionsThree = {
+        title: 'Out of 6 symptoms for Schizophrania:',
+    }
+
+    var chart3 = new google.visualization.PieChart(document.getElementById('piechart3'));
+
+    chart3.draw(thirdChartData, optionsThree);
+    }
+
 </script>
+
 </html>

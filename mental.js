@@ -1,25 +1,40 @@
-module.exports = function Mental(pool){
-    let illness = [];
+module.exports = function Mental(){
+    let names = {};
+    let surnames = {};
 
-    function displaySymptoms(){
-        pool.query("select * from symptoms");
-    }
-
-    function name(name){
-        if(!name){
-            return "Please enter name!";
+    function setNames(patientName){
+        if(names[patientName] === undefined){
+            names[patientName] = 0;
         }
     }
 
-    function age(age){
-        if(!age){
-            return "Please select your age group!";
+    function getNames(){
+        return names;
+    }
+
+    function setSurname (patientSurname){
+        if(surnames[patientSurname] === undefined){
+            surnames[patientSurname] = 0;
+        }
+    }
+
+    function getSurname(){
+        return surnames;
+    }
+
+    function userInput(name, surname){
+        if(name && surname){
+            if(name === true && surname){
+                return "Your appointment is successful" + name + surname;
+            }
         }
     }
 
     return {
-        displaySymptoms,
-        name,
-        age
+        setNames,
+        getNames,
+        userInput,
+        setSurname,
+        getSurname
     }
 }

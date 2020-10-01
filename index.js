@@ -55,6 +55,26 @@ app.get("/chart", async function (req, res) {
   res.render("chart")
 })
 
+app.post("/chart", function(req, res){
+
+  let username = req.body.name;
+  let userSurname = req.body.surname;
+
+  mental.setNames(username);
+  mental.setSurname(userSurname);
+
+})
+
+app.get('/chart', function(req, res){
+  let enteredName = mental.getNames();
+  let enteredSurname = mental.getSurname();
+
+  res.render("/chart", {
+    name : enteredName,
+    surname : enteredSurname
+  })
+})
+
 app.post("/goToForm", async function (req, res) {
 
   const answers = req.body;
@@ -88,13 +108,22 @@ app.post("/goToForm", async function (req, res) {
     }
   }));
 
-  res.render("chart", {
+  
+  const screenData = {
     illnessCounter,
-    symptomNames,
+    // symptomNames,
     "bipolar": illnessCounter["Bipolar"],
+    "bipolarNot": 5 - illnessCounter["Bipolar"],  
+
     "depression": illnessCounter["Deppression"],
-    "schizophrenia": illnessCounter["Schizophrania"]
-  })
+    "depressionNot": 5 - illnessCounter["Deppression"],
+
+    "schizophrenia": illnessCounter["Schizophrania"],
+    "schizophreniaNot": 6 - illnessCounter["Schizophrania"]
+  };
+
+  res.render("chart", screenData);
+
 });
 
 let PORT = process.env.PORT || 2020;
