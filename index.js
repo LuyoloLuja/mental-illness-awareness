@@ -55,6 +55,21 @@ app.get("/chart", async function (req, res) {
   res.render("chart")
 })
 
+app.get("/deppression", async function (req, res) {
+
+  res.render("deppression")
+})
+
+app.get("/bipolar", async function (req, res) {
+
+  res.render("bipolar")
+})
+
+app.get("/schizophrenia", async function (req, res) {
+
+  res.render("schizophrenia")
+})
+
 app.post("/goToForm", async function (req, res) {
 
   const answers = req.body;
