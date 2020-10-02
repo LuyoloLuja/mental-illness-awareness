@@ -87,14 +87,15 @@
             color: #fff;
             display: inline-block;
         }
-        /* .container .charts a {
+        .container .charts a {
             background-color: #FDCE4B;
             color: #293745;
             cursor: pointer;
             border: none;
             border-radius: 10px;
             padding: 15px 25px;
-        } */
+            margin-left: 180px;
+        }
     </style>
 </head>
 
@@ -104,13 +105,21 @@
             <li><a href="/">HOME</a></li>
             <li> <a href="/goToForm">CHECK SYMPTOMS</a> </li>
             <li> <a href="/chart">MAKE APPOINTMENT</a> </li>
-            <li> <a href="#">LEARN MORE</a> </li>
+            <li> <a href="/information">LEARN MORE</a> </li>
         </ul>
         <div class="charts">
             <div id="piechart" style="width: 800px; height: 400px;"></div>
-            {{!-- <a href="/information.handlebars">Learn More About Bipolar</a> --}}
+            <br><br><br><br>
+                <a href="/information">Learn More About Bipolar</a>
+            <br><br><br><br>
             <div id="piechart2" style="width: 800px; height: 400px;"></div>
+            <br><br><br><br>
+            <a href="/information">Learn More About Deppression</a>
+            <br><br><br><br>
             <div id="piechart3" style="width: 800px; height: 400px;"></div>
+            <br><br><br><br>
+            <a href="/information">Learn More About Schizophrania</a>
+            <br><br><br><br><br><br><br><br>
         </div>
 
         <form action="/chart" method="POST">

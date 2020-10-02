@@ -69,9 +69,13 @@ app.post("/chart", function(req, res){
   const {name, surname, doctor} = req.body;
 
   res.render('chart', {
-    message: `${name} ${surname} Your appointment with Dr.${doctor} will be processed!.`
+    message: `${name} ${surname} Your appointment with Dr.${doctor} will be scheduled!`
   })
 
+})
+
+app.get('/information', function(req, res){
+  res.render('information')
 })
 
 app.post("/goToForm", async function (req, res) {
